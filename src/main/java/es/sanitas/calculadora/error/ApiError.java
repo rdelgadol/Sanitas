@@ -13,6 +13,9 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Clase que devuelve una excepción de java con un formato JSON.
+ */
 @Setter
 @Getter
 @RequiredArgsConstructor
@@ -21,6 +24,8 @@ public class ApiError {
 
 	@NonNull
 	private HttpStatus estado;
+	@NonNull
+	private String resultado;
 	@JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy hh:mm:ss")
 	private LocalDateTime fecha = LocalDateTime.now();
 	@NonNull

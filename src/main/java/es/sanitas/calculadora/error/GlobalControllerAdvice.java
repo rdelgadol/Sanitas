@@ -13,27 +13,39 @@ import es.sanitas.calculadora.error.ApiError;
 import es.sanitas.calculadora.error.FueraLimites;
 import es.sanitas.calculadora.error.ScaleInvalido;
 
+/**
+ * Clase que captura excepciones de java y devuelve elementos JSON con la información de cada error.
+ */
 @RestControllerAdvice
 public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
+	
+	private String getName(Exception ex) {
+		String[] path=ex.getClass().getName().split("\\.");
+		return path[path.length-1];
+	}
+	
+	@ExceptionHandler(NullPointerException.class)
+	public ResponseEntity<ApiError> handleMissingOperand(NullPointerException ex) {
+		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, getName(ex), ex.getMessage());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
+	}
 
 	@ExceptionHandler(FueraLimites.class)
 	public ResponseEntity<ApiError> handleMissingOperand(FueraLimites ex) {
-		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
+		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, getName(ex), ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 	}
 
 	@ExceptionHandler(ScaleInvalido.class)
 	public ResponseEntity<ApiError> handleMissingOperand(ScaleInvalido ex) {
-		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
+		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, getName(ex), ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 	}
 	
 	@Override
 	protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers,
 			HttpStatus status, WebRequest request) {
-		String message="";
-		if(ex instanceof MissingPathVariableException) message="Falta introducir alguno de los operandos\n";
-		ApiError  apiError = new ApiError(status, message+ex.getMessage());
+		ApiError  apiError = new ApiError(status, getName(ex), ex.getMessage());
 		return ResponseEntity.status(status).headers(headers).body(apiError);
 	}
 }
