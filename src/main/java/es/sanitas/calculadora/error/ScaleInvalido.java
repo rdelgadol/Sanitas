@@ -11,6 +11,6 @@ public class ScaleInvalido extends RuntimeException {
 	private static final long serialVersionUID = 43876691117560211L;
 	
 	public ScaleInvalido(BigDecimal op) {
-		super("El valor de scale es invalido para el operando "+op);
+		super("El número de decimales es invalido para el operando "+op);
 	}
 }

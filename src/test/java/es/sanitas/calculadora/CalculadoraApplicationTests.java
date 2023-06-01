@@ -28,8 +28,8 @@ class CalculadoraApplicationTests {
 	 * Test de cualquier tipo para las operacione del API REST, introduciendo los valores apropiados en cada caso.
 	 * @param operacion String que representa la operación a realizar, según están difinidos los @GetMapping en CalculadoraController.
 	 * @param status Respuesta Http
-	 * @param val1 Primer operando.
-	 * @param val2 Segundo operando.
+	 * @param op1 Primer operando.
+	 * @param op2 Segundo operando.
 	 * @param resultado Resultado esperado.Si se trata de una operación válida es el resultado de la operación, en el caso de que sea
 	 * inválida, es el nombre de la excepción lanzada por java.
 	 */
@@ -37,12 +37,12 @@ class CalculadoraApplicationTests {
     @CsvSource({
     		//SUMAS-------------------------------
     		//Sumas válidas
-            "'+', 200, 2.12345, 1, '3.12345'",
-            "'+', 200, 2, 1.12345, '3.12345'",
-            "'+', 200, -1000000, 10, '-999990.0'",
-            "'+', 200, 1000000, 10, '1000010.0'",
-            "'+', 200, 10, -1000000, '-999990.0'",
-            "'+', 200, 10, 1000000, '1000010.0'",
+            "'+', 200, 2.12345, 1, 3.12345",
+            "'+', 200, 2, 1.12345, 3.12345",
+            "'+', 200, -1000000, 10, -999990",
+            "'+', 200, 1000000, 10, 1000010",
+            "'+', 200, 10, -1000000, -999990",
+            "'+', 200, 10, 1000000, 1000010",
     		//Sumas inválidas
             "'+', 400, 2.123456, 1, 'ScaleInvalido'",
             "'+', 400, 2, 1.123456, 'ScaleInvalido'",
@@ -50,26 +50,28 @@ class CalculadoraApplicationTests {
             "'+', 400, 1000001, 10, 'FueraLimites'",
             "'+', 400, 10, -1000001, 'FueraLimites'",
             "'+', 400, 10, 1000001, 'FueraLimites'",
+            "'+', 400, 10, 'dd', 'MethodArgumentTypeMismatchException'",
+            "'+', 400, 'dd', 10, 'MethodArgumentTypeMismatchException'",
     		//RESTAS-------------------------------
     		//Restas válidas
-            "'-', 200, 2.12345, 1, '1.12345'",
-            "'-', 200, 2, 1.12345, '0.87655'",
-            "'-', 200, -1000000, 10, '-1000010.0'",
-            "'-', 200, 1000000, 10, '999990.0'",
-            "'-', 200, 10, -1000000, '1000010.0'",
-            "'-', 200, 10, 1000000, '-999990.0'",
+            "'-', 200, 2.12345, 1, 1.12345",
+            "'-', 200, 2, 1.12345, 0.87655",
+            "'-', 200, -1000000, 10, -1000010",
+            "'-', 200, 1000000, 10, 999990",
+            "'-', 200, 10, -1000000, 1000010",
+            "'-', 200, 10, 1000000, -999990",
     		//Restas inválidas
             "'-', 400, 2.123456, 1, 'ScaleInvalido'",
             "'-', 400, 2, 1.123456, 'ScaleInvalido'",
             "'-', 400, -1000001, 10, 'FueraLimites'",
             "'-', 400, 1000001, 10, 'FueraLimites'",
             "'-', 400, 10, -1000001, 'FueraLimites'",
-            "'-', 400, 10, 1000001, 'FueraLimites'"
+            "'-', 400, 10, 1000001, 'FueraLimites'",
+            "'-', 400, 10, 'dd', 'MethodArgumentTypeMismatchException'",
+            "'-', 400, 'dd', 10, 'MethodArgumentTypeMismatchException'"
     })
     @DisplayName("Operaciones")
-    public void testSuma(String operacion,int status, double val1,double val2,String resultado) throws Exception {
-        BigDecimal op1 = BigDecimal.valueOf(val1);
-        BigDecimal op2 = BigDecimal.valueOf(val2);
+    public void testSuma(String operacion,int status, String op1,String op2,String resultado) throws Exception {
         /*Cuando se ha realizado una operación inválida el resultado esperado es el nombre de una excepción de java.
          * Si en cambio lo podemos convertir a un BigDecimal es el resultado de una operación válida*/
         Object resultadoEsperado=resultado; 

@@ -101,9 +101,8 @@
 			<scope>test</scope>
 		</dependency>
 		</dependencies>
-
-	<build>
-		<plugins>
+		<build>
+			<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -116,7 +115,35 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.6.0</version>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<artifactItems>
+						<artifactItem>
+							<groupId>io.corp.calculator</groupId>
+							<artifactId>tracer</artifactId>
+							<version>1.0.0</version>
+							<type>jar</type>
+							<overWrite>false</overWrite>
+							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+						</artifactItem>
+					</artifactItems>
+					<outputDirectory>${project.build.directory}/wars</outputDirectory>
+					<overWriteReleases>false</overWriteReleases>
+					<overWriteSnapshots>true</overWriteSnapshots>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>
