@@ -28,15 +28,11 @@ public class SwaggerConfig {
 	
 	@Bean
 	public ApiInfo apiInfo() {
-
 		return new ApiInfoBuilder()
 			.title("MiniCalculadora")
 			.description("API para realizar operaciones de suma y resta")
 			.version("1.0")
 			.contact(new Contact("Raúl Delgado Linares", "http://www.sanitas.es", "rdelgadol@yahoo.es"))
 			.build();
-		
-		
 	}
-
 }

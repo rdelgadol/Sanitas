@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * Clase que define los valoresvalores mínimo, máximos y número máximo de decimale
+ * Clase que define los valores mínimo, máximo y número máximo de decimales
  * para una operación en concreto.
  */
 @RequiredArgsConstructor

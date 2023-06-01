@@ -24,8 +24,8 @@ import es.sanitas.calculadora.error.ScaleInvalido;
 @RestController
 @RequiredArgsConstructor
 public class CalculadoraController {
-	/*Elemento del tipo EntornoOperacion, que define los valoresvalores mínimo, máximos y número máximo de decimale
-	 * para todas las operaciones del API REST*/
+	/*Elemento del tipo EntornoOperacion, que define los valores mínimo, máximo y número máximo de decimale
+	 para todas las operaciones del API REST.*/
 	public final EntornoOperacion entornoSuma;
 	public final EntornoOperacion entornoResta;
 	public final TracerImpl tracerImpl;
@@ -41,12 +41,12 @@ public class CalculadoraController {
 	}
 	
 	/**
-	 * Plantialla para una operación. Incorpora todaslas validaciones de mínimo, máximos y número máximo de decimales.
+	 * Plantialla para una operación. Incorpora todas las validaciones de mínimo, máximos y número máximo de decimales.
 	 * Las nuevas operaciones que se añadan al API REST tienen que invocar a este método.
 	 * @param op1 Primer operando.
 	 * @param op2 Segundo operando.
 	 * @param operacion BinaryOperator que representa qué operación se realiza.
-	 * @param entorno Elemento del tipo EntornoOperacion, que define los valoresvalores mínimo, máximos y número máximo de decimale
+	 * @param entorno Elemento del tipo EntornoOperacion, que define los valores mínimo, máximo y número máximo de decimales
 	 * para una operación en concreto.
 	 * @return El siguiente JSON {"resultado":Resultado de la operación}.
 	 */

@@ -30,7 +30,7 @@ class CalculadoraApplicationTests {
 	 * @param status Respuesta Http
 	 * @param op1 Primer operando.
 	 * @param op2 Segundo operando.
-	 * @param resultado Resultado esperado.Si se trata de una operación válida es el resultado de la operación, en el caso de que sea
+	 * @param resultado Resultado esperado. Si se trata de una operación válida, es el resultado de la operación, en el caso de que sea
 	 * inválida, es el nombre de la excepción lanzada por java.
 	 */
     @ParameterizedTest
@@ -72,8 +72,8 @@ class CalculadoraApplicationTests {
     })
     @DisplayName("Operaciones")
     public void testSuma(String operacion,int status, String op1,String op2,String resultado) throws Exception {
-        /*Cuando se ha realizado una operación inválida el resultado esperado es el nombre de una excepción de java.
-         * Si en cambio lo podemos convertir a un BigDecimal es el resultado de una operación válida*/
+        /*Cuando se ha realizado una operación inválida, el resultado esperado es el nombre de una excepción de java.
+         Si en cambio lo podemos convertir a un BigDecimal, es el resultado de una operación válida*/
         Object resultadoEsperado=resultado; 
         try {
 			resultadoEsperado=new BigDecimal(resultado);

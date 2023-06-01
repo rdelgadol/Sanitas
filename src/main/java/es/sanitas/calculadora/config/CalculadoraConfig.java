@@ -10,8 +10,8 @@ import io.corp.calculator.TracerAPI;
 import io.corp.calculator.TracerImpl;
 
 /**
- * Se establecen valores mínimo, máximo y máximo número de decimales para cada operación del REST API
- * Son unos valores aleatorios, simplemente para probar que la aplicacion valida bien
+ * Se establecen valores mínimo, máximo y máximo número de decimales para cada operación del REST API.
+ * Son unos valores aleatorios, simplemente para probar que la aplicacion valida bien.
  */
 @Configuration
 public class CalculadoraConfig {

@@ -30,5 +30,4 @@ public class ApiError {
 	private LocalDateTime fecha = LocalDateTime.now();
 	@NonNull
 	private String mensaje;
-	
 }
