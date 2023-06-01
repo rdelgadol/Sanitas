@@ -42,16 +42,16 @@ Se ejecutará la aplicación desde el jar con el comando:
 ## Uso y ejemplos
 Para realizar sumas, se accederá al siguiente endpoint: http://localhost/{op1}/+/{op2}, donde op1 y op2 son los operandos.
 Algunos ejemplos de sumas son:
-* http://localhost/20.38/+/10.25 
-* http://localhost/20.38/+/-10.25
-* http://localhost/-20.38/+/10.25
-* http://localhost/-20.38/+/-10.25
+* http://localhost:9001/20.38/+/10.25 
+* http://localhost:9001/20.38/+/-10.25
+* http://localhost:9001/-20.38/+/10.25
+* http://localhost:9001/-20.38/+/-10.25
 
 Para realizar restas, se accederá al siguiente endpoint: https://localhost/{op1}/-/{op2}, donde op1 y op2 son los operandos.
 Algunos ejemplos de restas son:
-* http://localhost/20.38/-/10.25 
-* http://localhost/20.38/-/-10.25
-* http://localhost/-20.38/-/10.25
-* http://localhost/-20.38/-/-10.25 
+* http://localhost:9001/20.38/-/10.25 
+* http://localhost:9001/20.38/-/-10.25
+* http://localhost:9001/-20.38/-/10.25
+* http://localhost:9001/-20.38/-/-10.25 
 
 Para visualizar la documentación generada por swagger, se accederá al enlace http://localhost:9001/swagger-ui.html#/
