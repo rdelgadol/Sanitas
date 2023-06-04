@@ -11,14 +11,14 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 import es.sanitas.calculadora.error.ApiError;
-import es.sanitas.calculadora.model.Resultado;
+import es.sanitas.calculadora.model.ResultadoJson;
 import es.sanitas.calculadora.error.FueraLimites; 
 import es.sanitas.calculadora.error.ScaleInvalido;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @ApiResponses(value= {
-		@ApiResponse(code=200, message="OK", response=Resultado.class),
+		@ApiResponse(code=200, message="OK", response=ResultadoJson.class),
 		@ApiResponse(code=400, message="Se ha rebasado el valor mínimo o máximo para algún operando", 
 			response=FueraLimites.class),
 		@ApiResponse(code=400, message="El número de decimales es invalido para algún operando", 

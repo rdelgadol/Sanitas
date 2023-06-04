@@ -1,22 +1,23 @@
 # Sanitas
 REST API que implementa una calculadora. 
 
-Sólo se incluyen las operaciones de suma y de resta, aunque es facilmente ampliable a otras.
+Sólo se incluyen las operaciones de suma y de resta, aunque es fácilmente ampliable a otras.
 
 ## Estructura del Proyecto
 El paquete base del proyecto es **es.sanitas.calculadora**.
 Los elementos que lo componen son, respecto la ruta anterior:   
 * Un controlador, situado en **controller/CalculadoraController**.
+* Un servicio **service/OperacionService**, que es el que hace las operaciones matemáticas.
 * Configuración para inyectar Beans: **config/CalculadoraConfig**.
 * Clases para gestionar excepciones: **error/GlobalControllerAdvice, error/FueraLimites** y **error/ScaleInvalido**
-* Un interfaz y una clase para contener valores límite a validar en cada operando: **error/EntornoOperacion** y **error/EntornoOperacionImpl**.
-* Respuestas JSON, sin error **model/Resultado** y si hay errores **error/ApiError**.
+* Una interfaz y una clase para contener valores límite a validar en cada operando: **error/EntornoOperacion** y **error/EntornoOperacionImpl**.
+* Respuestas JSON, sin error **model/ResultadoJson** y si hay errores **error/ApiError**.
 * Soporte para Swagger: **config/SwaggerConfig** y **annotation/SwaggerResponses**.
 * Tests: **CalculadoraApplicationTests**.
 
 También cuenta con estos elementos:
 * Al utilizar maven, un fichero **pom.xml**.
-* Fichero **calculadora/src/main/resources/application.properties** , donde se ha cambiado el puerto por defecto al 9001.
+* Fichero **calculadora/src/main/resources/application.properties**, donde se ha cambiado el puerto por defecto al 9001.
 
 ## Dependencias
 La aplicación está hecha con JDK11, Spring Boot 2.1.8.RELEASE y utiliza Maven como gestor de dependencias. Estas son:
@@ -33,7 +34,7 @@ Primero se instalará la dependencia io.corp.calculator en el repositorio local 
 
 `mvn install:install-file -Dfile=tracer-1.0.0.jar -DgroupId=io.corp.calculator -DartifactId=tracer -Dversion=1.0.0 -Dpackaging=jar`
 
-Después, el jar de la dependencia anterior se incluira en el proyecto, sólo con ejecutar `mvn package`.
+Después, el jar de la dependencia anterior se incluirá en el proyecto, sólo con ejecutar `mvn package`.
  
 Se ejecutará la aplicación desde el jar con el comando:
  

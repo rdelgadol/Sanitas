@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class Resultado {
+public class ResultadoJson {
 	@Getter
 	private final BigDecimal resultado;
 }

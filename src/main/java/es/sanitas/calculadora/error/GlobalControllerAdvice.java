@@ -3,22 +3,21 @@ package es.sanitas.calculadora.error;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MissingPathVariableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
-import es.sanitas.calculadora.error.ApiError;
-import es.sanitas.calculadora.error.FueraLimites;
-import es.sanitas.calculadora.error.ScaleInvalido;
 
 /**
  * Clase que captura excepciones de java y devuelve elementos JSON con la información de cada error.
  */
 @RestControllerAdvice
 public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
-	
+	/**
+	 * Método para obtener el nombre simple de una excepción.
+	 * @param ex Excepción que se lanza en un momento determinado.
+	 * @return El nombre de la excepción únicamente, sin tener en cuenta la ruta de paquetes. 
+	 */
 	private String getName(Exception ex) {
 		String[] path=ex.getClass().getName().split("\\.");
 		return path[path.length-1];

@@ -8,18 +8,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 /**
  * Clase que devuelve una excepción de java con un formato JSON.
  */
-@Setter
 @Getter
 @RequiredArgsConstructor
-@NoArgsConstructor
 public class ApiError {
 
 	@NonNull
