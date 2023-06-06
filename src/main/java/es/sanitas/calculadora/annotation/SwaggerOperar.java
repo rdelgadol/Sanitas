@@ -36,7 +36,7 @@ import es.sanitas.calculadora.exception.ScaleInvalidoException;
 		@ApiResponse(code=500, message="Internal Server Error", response=ApiError.class)
 })
 /**
- * Respuestas para realizar la documentación Swagger del endpoint CalculadoraController.operar
+ * Anotaciones para realizar la documentación Swagger del endpoint CalculadoraController.operar
  */
 public @interface SwaggerOperar {
 }

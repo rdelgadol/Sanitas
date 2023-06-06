@@ -9,12 +9,12 @@ Los elementos que lo componen son, respecto la ruta anterior:
 * Un controlador, situado en **controller/CalculadoraController**.
 * Un servicio **service/OperacionService**, que es el que hace las operaciones matemáticas.
 * Configuración para inyectar Beans: **config/CalculadoraConfig**.
-* Una excepción base **exception/CalculadoraException**, de la que heredan el resto de excepciones de la aplicación:  **exception/FaltaParametroException, exception/FueraLimitesException, exception/OperacionErroneaException** y **error/ScaleInvalidoException**.
+* Una excepción base **exception/CalculadoraException**, de la que heredan el resto de excepciones de la aplicación: **exception/FaltaParametroException, exception/FueraLimitesException, exception/OperacionErroneaException** y **error/ScaleInvalidoException**.
 * Una clase para gestionar excepciones y generar una respuesta JSON: **error/GlobalControllerAdvice**.
 * Una interfaz y una clase para contener valores límite a validar en cada operando: **error/EntornoOperacion** y **error/EntornoOperacionImpl**.
 * Una interfaz y una clase para contener las operaciones matemáticas permitidas **model/OperacionesMap** y **model/OperacionesMapImpl**.
-* Respuestas JSON, sin error **model/ResultadoJson** y si hay errores **error/ApiError**.
-* Soporte para Swagger: **config/SwaggerConfig** y **annotation/SwaggerResponses**.
+* Respuestas JSON, de las operaciones disponibles **model/OperacionesJson**, operaciones matemáticas sin error **model/ResultadoJson** y si hay errores **error/ApiError**.
+* Soporte para Swagger: **config/SwaggerConfig, annotation/SwaggerOperar** y **annotation/SwaggerOperaciones**.
 * Tests unitarios: **service/OperacionServiceTest**.
 
 También cuenta con estos elementos:
@@ -59,5 +59,7 @@ Algunos ejemplos de restas son:
 * http://localhost:9001/?operacion=resta&op1=20.38&op2=-10.25
 * http://localhost:9001/?operacion=resta&op1=-20.38&op2=10.25
 * http://localhost:9001/?operacion=resta&op1=-20.38&op2=-10.25
+
+Las operaciones matemáticas disponibles se pueden consultar en el siguiente endpoint: http://localhost:9001/operaciones
 
 Para visualizar la documentación generada por swagger, se accederá al enlace http://localhost:9001/swagger-ui.html#/

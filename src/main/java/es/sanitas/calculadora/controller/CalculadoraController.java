@@ -36,7 +36,8 @@ public class CalculadoraController {
 	@SwaggerOperaciones
 	@GetMapping("/operaciones")
 	/**
-	 * @return Las operaciones matemáticas permitidas por la aplicación.
+	 * @return Las operaciones matemáticas permitidas por la aplicación. Sólo incluímos los nombres y no los
+	 * objetos del tipo BinaryOperator.
 	 */
 	public ResponseEntity<OperacionesJson> operaciones() {
 		return ResponseEntity.ok(new OperacionesJson(operaciones.getOperaciones().keySet()));
