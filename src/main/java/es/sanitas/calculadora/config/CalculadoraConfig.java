@@ -1,15 +1,12 @@
 package es.sanitas.calculadora.config;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.math.BigDecimal;
-import java.util.function.BinaryOperator;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import es.sanitas.calculadora.error.EntornoOperacion;
 import es.sanitas.calculadora.error.EntornoOperacionImpl;
+import es.sanitas.calculadora.model.OperacionesMap;
+import es.sanitas.calculadora.model.OperacionesMapImpl;
 
 import io.corp.calculator.TracerImpl;
 
@@ -26,16 +23,12 @@ public class CalculadoraConfig {
 	}
 	
 	/**
-	 * @return Map con todas las operaciones que puede realizar la aplicación.
+	 * @return Objeto que contiene en un Map todas las operaciones que puede realizar la aplicación.
 	 */
 	@Bean
-	public Map<String,BinaryOperator<BigDecimal>> geOperaciones()
+	public OperacionesMap getOperacioneMaps()
 	{
-		//Iniciamos el HadhMap con una capacidad de 4, pensando en que se agregarán las operaciones de multiplicación y división. 
-		HashMap<String,BinaryOperator<BigDecimal>> map=new HashMap<>(4);
-		map.put("suma", (op1, op2) -> op1.add(op2));
-		map.put("resta", (op1, op2) -> op1.subtract(op2));
-		return map;
+		return new OperacionesMapImpl();
 	}	
 
 	@Bean

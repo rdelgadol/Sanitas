@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 import es.sanitas.calculadora.model.ResultadoJson;
-import es.sanitas.calculadora.annotation.SwaggerResponses;
+import es.sanitas.calculadora.annotation.SwaggerDocumentacion;
 import es.sanitas.calculadora.service.OperacionService;
 
 @RestController
@@ -20,8 +19,7 @@ public class CalculadoraController {
 	@Autowired	
 	OperacionService operacionService;
 	
-	@ApiOperation(value="Operar", notes="Realiza una operación matemática sobre dos operandos.")
-	@SwaggerResponses
+	@SwaggerDocumentacion
 	@GetMapping("/")
 	public ResponseEntity<ResultadoJson> operar(@ApiParam(value="Operación", required=true, type = "String") @RequestParam("operacion") String operacion,
 			@ApiParam(value="Primer operando", required=true, type = "BigDecimal") @RequestParam("op1") BigDecimal op1, 

@@ -8,11 +8,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import es.sanitas.calculadora.exception.CalculadoraException;
+
 /**
  * Clase que captura excepciones de java y devuelve elementos JSON con la información de cada error.
  */
 @RestControllerAdvice
 public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
+	
 	/**
 	 * Método para obtener el nombre simple de una excepción.
 	 * @param ex Excepción que se lanza en un momento determinado.
@@ -23,20 +26,8 @@ public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
 		return path[path.length-1];
 	}
 	
-	@ExceptionHandler(NullPointerException.class)
-	public ResponseEntity<ApiError> handleMissingOperand(NullPointerException ex) {
-		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, getName(ex), ex.getMessage());
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
-	}
-
-	@ExceptionHandler(FueraLimites.class)
-	public ResponseEntity<ApiError> handleMissingOperand(FueraLimites ex) {
-		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, getName(ex), ex.getMessage());
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
-	}
-
-	@ExceptionHandler(ScaleInvalido.class)
-	public ResponseEntity<ApiError> handleMissingOperand(ScaleInvalido ex) {
+	@ExceptionHandler(CalculadoraException.class)
+	public ResponseEntity<ApiError> handleFaltaParametro(CalculadoraException ex) {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, getName(ex), ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 	}

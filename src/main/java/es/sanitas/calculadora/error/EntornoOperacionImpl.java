@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * Clase que define los valores mínimo, máximo y número máximo de decimales para una operación en concreto.
+ * Clase que define los valores mínimo, máximo y número máximo de decimales para cada operación del REST API.
  */
 @RequiredArgsConstructor
 @Getter
@@ -18,5 +18,11 @@ public class EntornoOperacionImpl implements EntornoOperacion{
 	public EntornoOperacionImpl(double min,double max,int scale)
 	{
 		this(BigDecimal.valueOf(min),BigDecimal.valueOf(max),scale);
+	}
+	
+	@Override
+	public String toString() {
+		return "Los valores límite permitidos son: mímimo= "+getMin()+", máximo= "+getMax()+
+				" y máximo número de decimales= "+getScale()+".";
 	}
 }
